@@ -6,8 +6,8 @@ from rest_framework_simplejwt.views import  TokenObtainPairView, TokenRefreshVie
    
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
-router.register('products', views.ProductViewSet), 
-router.register('category', views.CategoryViewSet )
+router.register('products', views.ProductViewSet,basename='products'), 
+router.register('category', views.CategoryViewSet,basename='categoris' )
 router.register('images', views.ProductimagesViewSet )
 router.register('productfeature', views.ProductFeatureView)
 

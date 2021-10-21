@@ -215,6 +215,7 @@ REST_FRAMEWORK = {
         'anon': '2000/day',
         'user': '4000/hour',
         'student':'3000/min',
+        'product': '3000/min',
     },
     'DEFAULT_FILTER_BACKENDS':
         ['django_filters.rest_framework.DjangoFilterBackend'],

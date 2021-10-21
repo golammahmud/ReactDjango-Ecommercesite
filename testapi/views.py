@@ -37,3 +37,4 @@ class StudentViewSet(viewsets.ModelViewSet):
     pagination_class=MyLimitOffsetPagination
     
     ordering_fields=['name','age','address']
+    # lookup_fields=['slug',]

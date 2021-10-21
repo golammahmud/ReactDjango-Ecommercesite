@@ -39,6 +39,8 @@ class Category(models.Model):
     # post_images.short_description='Profile picture'
     # post_images.alow_tags=True
     
+    # def get_absolute_url(self):
+    #     return reverse('products', kwargs={'slug': self.slug})
     
     
     def get_avatar(self):
@@ -103,7 +105,7 @@ class Product(models.Model):
     product_avatar_tag.short_description = 'image'
     
     def get_absolute_url(self):
-        return reverse('article_detail', kwargs={'slug': self.slug})
+        return reverse('categoris', kwargs={'slug': self.slug})
     
     
 def create_slug(instance,new_slug=None):

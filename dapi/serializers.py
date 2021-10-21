@@ -18,7 +18,7 @@ class ProductImageSerializer(serializers.HyperlinkedModelSerializer):
         # include='products'
         
 
-class ProductSerializer(serializers.HyperlinkedModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
  
     products=ProductImageSerializer(many=True, read_only=True)
     features=ProductFeatureSerializers(many=True, read_only=True)
@@ -27,8 +27,12 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
         model = Product
         # fields = '__all__'
         # include=['images']
-        fields = ['id','url','title','slug','price','category','variasions','stock','description','image','is_featured' ,'created_at','products','features']
-       
+        fields = ['id','title','slug','price','category','variasions','stock','description','image','is_featured' ,'created_at','products','features']
+        lookup_field = 'slug'
+        extra_kwargs = {
+            'url': {'lookup_field': 'slug'}
+        }
+
 
 
 # class CategoryDetailsSerializers(serializers.HyperlinkedModelSerializer):
@@ -38,13 +42,14 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 
 
 
-class CategorySerializer(serializers.HyperlinkedModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     products = ProductSerializer(many=True,read_only=False)
     class Meta:
         model = Category
-        fields = ['url','id','title','slug','parent','image','is_featured','created_at','products']
+        fields = ['id','title','slug','parent','image','is_featured','created_at','products']
         # fields = '__all__'
         # include=['id','products']
-
-
-        
+        lookup_field = 'slug'
+        extra_kwargs = {
+            'url': {'lookup_field': 'slug'}
+        }
